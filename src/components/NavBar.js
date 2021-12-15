@@ -25,9 +25,15 @@ const NavBar = () => {
                     <Link to='/login' style={navLinkStyle}>
                         Login
                     </Link>
-                    <Link to={null} style={navLinkStyle}>FriendList</Link>
-                    <Link to={null} style={navLinkStyle}>AddFriend</Link>
-                    <Link to={null} style={navLinkStyle}>Logout</Link>
+                    <Link to='/friends' style={navLinkStyle}>
+                        FriendList
+                    </Link>
+                    <Link to='/friends/add' style={navLinkStyle}>
+                        AddFriend
+                    </Link>
+                    <Link to='/logout' style={navLinkStyle}>
+                        Logout
+                    </Link>
                 </nav>
             </div>
             <hr />

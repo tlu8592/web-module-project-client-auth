@@ -11,6 +11,9 @@ function App() {
       {/* <h2>Client Auth Project</h2> */}
       <NavBar />
       <Switch>
+        <Route path='/logout' component={null} />
+        <Route path='/friends/add' component={null} /> 
+        <Route path='/friends' component={null} />
         <Route path='/login' component={Login} />
         <Route exact path='/' component={Login} />
       </Switch>
