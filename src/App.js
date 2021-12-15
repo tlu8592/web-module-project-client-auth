@@ -19,7 +19,7 @@ function App() {
       {/* <h2>Client Auth Project</h2> */}
       <NavBar />
       <Switch>
-        <PrivateRoute exact path='/friends/add' component={AddFriendForm} />
+        <PrivateRoute path='/friends/add' component={AddFriendForm} />
            
         <PrivateRoute path='/friends' component={FriendsList} />
         
@@ -31,7 +31,7 @@ function App() {
           <Login history={history} />
         </Route>
         
-        <Route path='/'>
+        <Route exact path='/'>
           <Login history={history} /> 
         </Route>
       </Switch>
