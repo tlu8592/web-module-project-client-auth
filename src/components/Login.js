@@ -1,18 +1,70 @@
 import React from 'react';
+// import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 class Login extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            credentials: {
+                username: '',
+                password: ''
+            }
+        }
+    }
+
+    handleChanges = e => {
+        this.setState({
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
+        });
+    }
+
+    // handleUsernameChanges = e => {
+    //     this.setState({
+    //         credentials: {
+    //             username: e.target.value
+    //         }
+    //     })
+    // }
+
+    // handlePasswordChanges = e => {
+    //     this.setState({
+    //         crendentials: {
+    //             password: e.target.value
+    //         }
+    //     })
+    // }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth().post('http://localhost:9000/api/login', this.state.credentials)
+            .then(res => {
+                console.log(res);
+                const { token } = res.data;
+                localStorage.setItem("token", token);
+                this.props.history.push('/friends');
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     render() {
         return (
             <div className='login-form'>
                 <h1>Login</h1>
-                <form onSubmit={null}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         Username
                         <input
                             id='username'
                             type='text'
-                            onChange={null}
-                            value={null}
+                            name='username'
+                            value={this.state.credentials.username}
+                            onChange={this.handleChanges}
                         />
                     </label>
                     <label>
@@ -20,14 +72,15 @@ class Login extends React.Component {
                         <input 
                             id='password'
                             type='password'
-                            onChange={null}
-                            value={null}
+                            name='password'
+                            value={this.state.credentials.password}
+                            onChange={this.handleChanges}
                         />
                     </label>
+                    <div className='submit-btn'>
+                        <button>Submit</button>
+                    </div>
                 </form>
-                <div className='submit-btn'>
-                    <button>Submit</button>
-                </div>
             </div>
         )
     }
