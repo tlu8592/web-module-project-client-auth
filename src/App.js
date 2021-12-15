@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import Login from './components/Login';
@@ -10,7 +10,10 @@ function App() {
     <div className="App">
       {/* <h2>Client Auth Project</h2> */}
       <NavBar />
-      <Login />
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route exact path='/' component={Login} />
+      </Switch>
     </div>
   );
 }
