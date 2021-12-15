@@ -1,8 +1,22 @@
-import React, { useEffect } from 'react'
-import axiosWithAuth from '../utils/axiosWithAuth';
+import React from 'react'
+import { useHistory } from 'react-router-dom';
+// import axiosWithAuth from '../utils/axiosWithAuth';
 
-const Logout = props => {
-    const { history } = props;
+const h4Style = {
+    fontSize: "3rem"
+};
+
+const buttonStyle = {
+    width: '30rem',
+    height: '10rem',
+    fontSize: '2.5rem',
+    fontWeight: '600',
+    backgroundColor: 'black',
+    color: 'white'
+};
+
+const Logout = () => {
+    const { push } = useHistory();
 
     // useEffect(() => {
     //     axiosWithAuth.post('http://localhost:9000/api/logout')
@@ -14,8 +28,8 @@ const Logout = props => {
 
     return (
         <div>
-            <h4>Logged out successfully!</h4>
-            <button onClick={() => history.push('/')}>Go to Home Page</button>
+            {!localStorage.getItem("token") ? <h4 style={h4Style}>You are not logged in.</h4> : <h4 style={h4Style}>Logged out successfully!</h4>}
+            <button style={buttonStyle} onClick={() => push('/')}>Go to Home Page</button>
         </div>
     )
 }
