@@ -4,16 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const AddFriendForm = () => {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         formValues: {
-    //             id: uuidv4(),
-    //             friendName: "",
-    //             friendEmail: ""
-    //         }
-    //     }
-    // }
     const [formValues, setFormValues] = useState({
         id: uuidv4(),
         friendName: "",
@@ -38,7 +28,6 @@ const AddFriendForm = () => {
         }
         axiosWithAuth().post('http://localhost:9000/api/friends', newFriend)
             .then(res => {
-                // console.log(res);
                 history.push('/friends');
             })
             .catch(err => console.log(err));

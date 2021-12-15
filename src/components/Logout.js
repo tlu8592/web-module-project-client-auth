@@ -18,14 +18,6 @@ const buttonStyle = {
 const Logout = () => {
     const { push } = useHistory();
 
-    // useEffect(() => {
-    //     axiosWithAuth.post('http://localhost:9000/api/logout')
-    //         .then(res => {
-    //             localStorage.removeItem('token');
-    //         })
-    //         .catch(err => console.log(err));
-    // }, []);
-
     return (
         <div>
             {!localStorage.getItem("token") ? <h4 style={h4Style}>You are not logged in.</h4> : <h4 style={h4Style}>Logged out successfully!</h4>}

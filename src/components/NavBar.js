@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
-// import Login from './Login';
 
 const navLinkStyle = {
     backgroundColor: 'black',
@@ -26,10 +25,6 @@ const NavBar = () => {
             <div className="header">
                 <h1>Friends Database</h1>
                 <nav className="navbar">
-                    {/* <a href="#">Login</a>
-                    <a href="#">FriendList</a>
-                    <a href="#">AddFriend</a>
-                    <a href="#">Logout</a> */}
                     <Link to='/login' style={navLinkStyle}>
                         Login
                     </Link>
