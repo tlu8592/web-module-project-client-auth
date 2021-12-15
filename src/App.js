@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import AddFriendForm from './components/AddFriendForm';
+import Logout from './components/Logout';
 
 function App() {
   const history = useHistory();
@@ -16,7 +17,9 @@ function App() {
       {/* <h2>Client Auth Project</h2> */}
       <NavBar />
       <Switch>
-        <Route path='/logout' component={null} />
+        <Route path='/logout'>
+          <Logout history={history} />
+        </Route>
         <Route path='/friends/add'>
           <AddFriendForm history={history} />  
         </Route> 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Login from './Login';
+import axiosWithAuth from '../utils/axiosWithAuth';
+// import Login from './Login';
 
 const navLinkStyle = {
     backgroundColor: 'black',
@@ -10,6 +11,13 @@ const navLinkStyle = {
     fontWeight: '700',
     padding: '2rem 2rem',
     paddingTop: '2.5rem'
+}
+
+const logoutHandler = () => {
+    axiosWithAuth().post('http://localhost:9000/api/logout')
+        .then(res => {
+            localStorage.removeItem('token');
+        })
 }
 
 const NavBar = () => {
@@ -31,7 +39,7 @@ const NavBar = () => {
                     <Link to='/friends/add' style={navLinkStyle}>
                         AddFriend
                     </Link>
-                    <Link to='/logout' style={navLinkStyle}>
+                    <Link to='/logout' style={navLinkStyle} onClick={logoutHandler}>
                         Logout
                     </Link>
                 </nav>
