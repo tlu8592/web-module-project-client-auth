@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
+import AddFriendForm from './components/AddFriendForm';
 
 function App() {
   const history = useHistory();
@@ -16,7 +17,9 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/logout' component={null} />
-        <Route path='/friends/add' component={null} /> 
+        <Route path='/friends/add'>
+          <AddFriendForm history={history} />  
+        </Route> 
         <Route path='/friends' component={FriendsList} />
         <Route path='/login' >
           <Login history={history} />
