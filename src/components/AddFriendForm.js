@@ -20,7 +20,7 @@ const AddFriendForm = () => {
         friendEmail: ""
     })
 
-    const { push } = useHistory
+    const history = useHistory();
 
     const handleChanges = e => {
         setFormValues({
@@ -39,7 +39,7 @@ const AddFriendForm = () => {
         axiosWithAuth().post('http://localhost:9000/api/friends', newFriend)
             .then(res => {
                 // console.log(res);
-                push('/friends');
+                history.push('/friends');
             })
             .catch(err => console.log(err));
     }
@@ -47,15 +47,15 @@ const AddFriendForm = () => {
     return (
         <div className='friend-form'>
             <h1>Add Friend</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>
                     Friend Name
                         <input
                             id='friendName'
                             type='text'
                             name='friendName'
-                            value={this.state.formValues.friendName}
-                            onChange={this.handleChanges}
+                            value={formValues.friendName}
+                            onChange={handleChanges}
                         />
                 </label>
                 <label>
@@ -64,8 +64,8 @@ const AddFriendForm = () => {
                             id='friendEmail'
                             type='email'
                             name='friendEmail'
-                            value={this.state.formValues.friendEmail}
-                            onChange={this.handleChanges}
+                            value={formValues.friendEmail}
+                            onChange={handleChanges}
                         />
                 </label>
                 <div className="submit-btn">
